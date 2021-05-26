@@ -1,0 +1,47 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.example.opengldemo.pointcloud.view.PanoramaView
+        android:id="@+id/panoramaView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_above="@+id/pointGLView"
+        android:src="@drawable/earth_2d"
+        android:background="#66000000"/>
+
+    <com.example.opengldemo.pointcloud.view.PointCloudGLView
+        android:id="@+id/pointGLView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentBottom="true"
+        android:visibility="visible"/>
+
+    <com.example.opengldemo.pointcloud.view.PaletteView
+        android:id="@+id/paletteView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentBottom="true"
+        android:visibility="visible"/>
+
+    <com.example.opengldemo.pointcloud.view.PaletteSwitchView
+        android:id="@+id/paletteSwitchView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
+        android:visibility="visible"/>
+
+    <include
+        android:id="@+id/answerCheckView"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_alignParentBottom="true"
+        layout="@layout/layout_check_3d_mark_answer"
+        android:visibility="gone"/>
+
+</RelativeLayout>

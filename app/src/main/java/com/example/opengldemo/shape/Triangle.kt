@@ -1,7 +1,7 @@
 package com.example.opengldemo.shape
 
 import android.opengl.GLES20
-import com.example.opengldemo.utlis.ShaderUtil
+import com.example.opengldemo.utlis.*
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.nio.FloatBuffer
@@ -10,59 +10,31 @@ import java.nio.FloatBuffer
  * 绘制三角形
  */
 
-//数组中每个顶点的坐标数
-const val COORDS_PER_VERTEX = 3
-//三角形坐标
-var triangleCoords = floatArrayOf( //按逆时针顺序
-    0.0f, 0.622008459f, 0.0f,      // 顶部
-    -0.5f, -0.311004243f, 0.0f,    // 左下
-    0.5f, -0.311004243f, 0.0f      // 右下
-)
-
 class Triangle {
-    //使用RGB色值和Alpha设置颜色
-    val color = floatArrayOf(
-        0.63671875f, 0.76953125f, 0.22265625f, 1.0f
-    )
-
     //将坐标写入 ByteBuffer 中
-    private var vertexBuffer: FloatBuffer =
-        //申请内存，坐标值的数量*4字节
-        ByteBuffer.allocateDirect(triangleCoords.size * 4).run {
-            //使用硬件native字节指令
-            order(ByteOrder.nativeOrder())
-            //从ByteBuffer创建一个浮点缓冲区
-            asFloatBuffer().apply {
-                //将坐标添加到FloatBuffer
-                put(triangleCoords)
-                //设置缓冲区以读取第一个坐标
-                position(0)
-            }
-        }
+    private var vertexBuffer: FloatBuffer = BufferUtil.getFloatBuffer(CoordinateUtil.triangleCoords)
 
     private var mProgram: Int
 
     init {
         //添加顶点着色器和片段着色器到程序中
-        val vertexShader: Int = ShaderUtil.loadVertexShader()
+        val vertexShader = ShaderUtil.loadVertexShader()
         val fragmentShader = ShaderUtil.loadFragmentShader()
-        mProgram = GLES20.glCreateProgram().also {program ->
-            GLES20.glAttachShader(program, vertexShader)
-            GLES20.glAttachShader(program, fragmentShader)
-            GLES20.glLinkProgram(program)
-        }
+        mProgram = ProgramUtil.getProgramWithVF(vertexShader, fragmentShader)
     }
 
     private var mPositionHandle: Int = 0
     private var mColorHandle: Int = 0
+    private var vPMatrixHandle: Int = 0
 
-    private val verTexCount = triangleCoords.size / COORDS_PER_VERTEX
-    private val verTexStride = COORDS_PER_VERTEX * 4  //???
+
+    private val verTexCount = CoordinateUtil.triangleCoords.size / CoordinateUtil.COORDS_PER_VERTEX
+    private val verTexStride = CoordinateUtil.COORDS_PER_VERTEX * 4  //???
 
     /**
      * 绘制
      */
-    fun draw() {
+    fun draw(mvpMatrix: FloatArray) {
         //获取程序
         GLES20.glUseProgram(mProgram)
 
@@ -74,7 +46,7 @@ class Triangle {
             //准备三角形坐标数据
             GLES20.glVertexAttribPointer(
                 it,
-                COORDS_PER_VERTEX,
+                CoordinateUtil.COORDS_PER_VERTEX,
                 GLES20.GL_FLOAT,
                 false,
                 verTexStride,
@@ -84,7 +56,11 @@ class Triangle {
 
         //返回统一变量的位置(此处是获取程序中颜色的位置)
         mColorHandle = GLES20.glGetUniformLocation(mProgram, "vColor").also {
-            GLES20.glUniform4fv(it, 1, color, 0)
+            GLES20.glUniform4fv(it, 1, ColorUtil.color, 0)
+        }
+
+        vPMatrixHandle = GLES20.glGetUniformLocation(mProgram, "uMVPMatrix").also {
+            GLES20.glUniformMatrix4fv(it, 1, false, mvpMatrix, 0)
         }
 
         //绘制三角形

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="61dp"
+    android:layout_height="32dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:background="@drawable/bg_palette_switch">
+
+    <ImageView
+        android:id="@+id/pen"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginLeft="3dp"
+        android:padding="6dp"
+        android:src="@drawable/src_pen_select"
+        android:background="@drawable/bg_pen_select"/>
+
+    <ImageView
+        android:id="@+id/eraser"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginLeft="3dp"
+        android:padding="5.5dp"
+        android:src="@drawable/src_eraser_select"
+        android:background="@drawable/bg_eraser_select"/>
+
+</LinearLayout>
