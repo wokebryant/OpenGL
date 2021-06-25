@@ -6,7 +6,6 @@ import android.opengl.GLSurfaceView
 import android.opengl.Matrix
 import android.os.SystemClock
 import android.util.Log
-import androidx.constraintlayout.solver.widgets.Analyzer
 import com.example.opengldemo.shape.*
 import com.example.opengldemo.utlis.TextureUtil
 import javax.microedition.khronos.egl.EGLConfig
