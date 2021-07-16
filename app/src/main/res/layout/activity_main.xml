@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OpenGLES20Activity">
-
-    <com.example.opengldemo.widget.MyGLSurfaceView
-        android:id="@+id/myGLSurfaceView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Button
-        android:id="@+id/scaleBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="缩放"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginBottom="20dp"
-        android:visibility="visible"/>
+        android:id="@+id/test_openGL_btn"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="OpenGL示例"
+        android:textStyle="bold"/>
 
-</FrameLayout>
+    <Button
+        android:id="@+id/test_openCV_btn"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/test_openGL_btn"
+        android:text="OpenCV示例"
+        android:textStyle="bold"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

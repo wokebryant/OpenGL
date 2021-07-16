@@ -5,18 +5,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.example.opengldemo.pointcloud.view.PointRelatedView
+    <com.example.opendemo.opengl.pointcloud.view.PointRelatedView
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
 <!--    三视图框选，暂时屏蔽-->
-<!--    <com.example.opengldemo.pointcloud.view.SelectView-->
+<!--    <com.example.opengldemo.opengl.pointcloud.view.SelectView-->
 <!--        android:id="@+id/selectView"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="match_parent"-->
 <!--        android:visibility="gone"/>-->
 
-<!--    <com.example.opengldemo.pointcloud.view.CubeGLView-->
+<!--    <com.example.opengldemo.opengl.pointcloud.view.CubeGLView-->
 <!--        android:id="@+id/cubeView"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="match_parent"-->

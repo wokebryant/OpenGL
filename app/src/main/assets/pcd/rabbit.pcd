@@ -1,4 +1,4 @@
-# .PCD v0.7 - Point Cloud com.example.opengldemo.pointcloud.Data file format
+# .PCD v0.7 - Point Cloud com.example.opengldemo.opengl.pointcloud.Data file format
 VERSION 0.7
 FIELDS x y z
 SIZE 4 4 4

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.example.opengldemo.pointcloud.view.PanoramaView
+    <com.example.opendemo.opengl.pointcloud.view.PanoramaView
         android:id="@+id/panoramaView"
         android:layout_width="match_parent"
         android:layout_height="300dp"
@@ -12,21 +12,21 @@
         android:src="@drawable/earth_2d"
         android:background="#66000000"/>
 
-    <com.example.opengldemo.pointcloud.view.PointCloudGLView
+    <com.example.opendemo.opengl.pointcloud.view.PointCloudGLView
         android:id="@+id/pointGLView"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_alignParentBottom="true"
         android:visibility="visible"/>
 
-    <com.example.opengldemo.pointcloud.view.PaletteView
+    <com.example.opendemo.opengl.pointcloud.view.PaletteView
         android:id="@+id/paletteView"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_alignParentBottom="true"
         android:visibility="visible"/>
 
-    <com.example.opengldemo.pointcloud.view.PaletteSwitchView
+    <com.example.opendemo.opengl.pointcloud.view.PaletteSwitchView
         android:id="@+id/paletteSwitchView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
